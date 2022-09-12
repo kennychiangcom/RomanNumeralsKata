@@ -17,6 +17,27 @@ namespace RomanNumeralsApp.Tests
         }
 
         [Test]
+        public void TestConvertingValidNumbers()
+        {
+            _romanNumeralsConverter.NConvert(1).Should().Be("I");
+            _romanNumeralsConverter.NConvert(3).Should().Be("III");
+            _romanNumeralsConverter.NConvert(4).Should().Be("IV");
+            _romanNumeralsConverter.NConvert(6).Should().Be("VI");
+            _romanNumeralsConverter.NConvert(8).Should().Be("VIII");
+            _romanNumeralsConverter.NConvert(1989).Should().Be("MCMLXXXIX");
+            _romanNumeralsConverter.NConvert(3888).Should().Be("MMMDCCCLXXXVIII");
+            _romanNumeralsConverter.NConvert(3999).Should().Be("MMMCMXCIX");
+        }
+
+        [Test]
+        public void TestConvertingInvalidNumbers()
+        {
+            _romanNumeralsConverter.NConvert(0).Should().Be("");
+            _romanNumeralsConverter.NConvert(4000).Should().Be("");
+            _romanNumeralsConverter.NConvert(-29).Should().Be("");
+        }
+
+        [Test]
         public void TestConvertingValidNumerals()
         {
             _romanNumeralsConverter.RConvert("i").Should().Be(1);
@@ -27,6 +48,7 @@ namespace RomanNumeralsApp.Tests
             _romanNumeralsConverter.RConvert("MCMLXXXix").Should().Be(1989);
             _romanNumeralsConverter.RConvert("MMMDCCCLXXXVIII").Should().Be(3888);
         }
+
         [Test]
         public void TestConvertingInvalidNumerals()
         {
@@ -37,6 +59,9 @@ namespace RomanNumeralsApp.Tests
             _romanNumeralsConverter.RConvert("CCCC").Should().Be(-1);
             _romanNumeralsConverter.RConvert("DD").Should().Be(-1);
             _romanNumeralsConverter.RConvert("MMMM").Should().Be(-1);
+            _romanNumeralsConverter.RConvert("MMDM").Should().Be(-1);
+            _romanNumeralsConverter.RConvert("LCX").Should().Be(-1);
+            _romanNumeralsConverter.RConvert("CVXII").Should().Be(-1);
         }
     }
 }

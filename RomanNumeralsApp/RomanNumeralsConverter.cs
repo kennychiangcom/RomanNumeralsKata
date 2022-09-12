@@ -12,6 +12,12 @@ namespace RomanNumeralsApp
         {
         }
 
+        public string NConvert(int num)
+        {
+            if (num < 1 || num > 3999) return "";
+            return "";
+        }
+
         public int RConvert(string num)
         {
             num = num.ToUpper().Trim();
