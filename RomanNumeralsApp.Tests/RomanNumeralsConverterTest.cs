@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RomanNumeralsApp.Tests
+﻿namespace RomanNumeralsApp.Tests
 {
     public class RomanNumeralsConverterTest
     {
@@ -37,13 +31,13 @@ namespace RomanNumeralsApp.Tests
         [Test]
         public void TestConvertingValidNumbers4()
         {
-            _romanNumeralsConverter.NConvert(4).Should().Be("IV");
+            _romanNumeralsConverter.NConvert(74).Should().Be("LXXIV");
         }
 
         [Test]
         public void TestConvertingValidNumbers5()
         {
-            _romanNumeralsConverter.NConvert(6).Should().Be("VI");
+            _romanNumeralsConverter.NConvert(886).Should().Be("DCCCLXXXVI");
         }
 
         [Test]

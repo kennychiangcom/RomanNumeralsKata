@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RomanNumeralsApp
+﻿namespace RomanNumeralsApp
 {
     public class RomanNumeralsConverter
     {
@@ -14,25 +8,25 @@ namespace RomanNumeralsApp
 
         public string NConvert(int num)
         {
-            if (num < 1 || num > 3999) return "";
+            const int ROMAN_NUMERAL_MIN = 1;
+            const int ROMAN_NUMERAL_MAX = 3999;
+            if (num < ROMAN_NUMERAL_MIN || num > ROMAN_NUMERAL_MAX) return "";
             string snum = num.ToString();
-            Console.WriteLine($"{snum}  {snum.Length}\r\n{num}\r\n");
             string[,] rnValue = new string[,]
             {
-                {"","M","MM","MMM","","","","","","" },
-                {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM" },
+                {"","I","II","III","IV","V","VI","VII","VIII","IX" },
                 {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC" },
-                {"","I","II","III","IV","V","VI","VII","VIII","IX" }
+                {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM" },
+                {"","M","MM","MMM","","","","","","" }
             };
-            Console.WriteLine($"{rnValue[3,3]}  {rnValue[2, 8]}  {rnValue[1, 8]}  {rnValue[0, 8]}\r\n");
 
+            const int ZERO_BASE_ADJ = -1;
+            int seqChar = snum.Length + ZERO_BASE_ADJ;
             string rnum = "";
-            for (int x = snum.Length - 1; x >= 0; x--)
+            for (int x = seqChar; x >= 0; x--)
             {
-                Console.WriteLine($"{x}  {int.Parse(snum.Substring(x, 1))}\r\n");
-                rnum = rnValue[x, int.Parse(snum.Substring(x, 1))] + rnum;
+                rnum += rnValue[x, int.Parse(snum.Substring(seqChar - x, 1))];
             }
-            Console.WriteLine(rnum);
             return rnum;
         }
 
@@ -80,7 +74,8 @@ namespace RomanNumeralsApp
                         return -1;
                 }
             }
-            for (int i = 0; i < numValue.Length - 1; i++)
+            const int ZERO_BASE_ADJ = -1;
+            for (int i = 0; i < numValue.Length + ZERO_BASE_ADJ; i++)
             {
                 if (numValue[i] < numValue[i + 1]) numValue[i] = -numValue[i];
             }
