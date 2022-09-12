@@ -17,15 +17,50 @@ namespace RomanNumeralsApp.Tests
         }
 
         [Test]
-        public void TestConvertingValidNumbers()
+        public void TestConvertingValidNumbers1()
+        {
+            _romanNumeralsConverter.NConvert(3888).Should().Be("MMMDCCCLXXXVIII");
+        }
+
+        [Test]
+        public void TestConvertingValidNumbers2()
         {
             _romanNumeralsConverter.NConvert(1).Should().Be("I");
+        }
+
+        [Test]
+        public void TestConvertingValidNumbers3()
+        {
             _romanNumeralsConverter.NConvert(3).Should().Be("III");
+        }
+
+        [Test]
+        public void TestConvertingValidNumbers4()
+        {
             _romanNumeralsConverter.NConvert(4).Should().Be("IV");
+        }
+
+        [Test]
+        public void TestConvertingValidNumbers5()
+        {
             _romanNumeralsConverter.NConvert(6).Should().Be("VI");
+        }
+
+        [Test]
+        public void TestConvertingValidNumbers6()
+        {
             _romanNumeralsConverter.NConvert(8).Should().Be("VIII");
+        }
+
+        [Test]
+        public void TestConvertingValidNumbers7()
+        {
             _romanNumeralsConverter.NConvert(1989).Should().Be("MCMLXXXIX");
-            _romanNumeralsConverter.NConvert(3888).Should().Be("MMMDCCCLXXXVIII");
+        }
+
+        [Test]
+        public void TestConvertingValidNumbers8()
+        {
             _romanNumeralsConverter.NConvert(3999).Should().Be("MMMCMXCIX");
         }
 

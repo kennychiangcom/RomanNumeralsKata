@@ -15,7 +15,25 @@ namespace RomanNumeralsApp
         public string NConvert(int num)
         {
             if (num < 1 || num > 3999) return "";
-            return "";
+            string snum = num.ToString();
+            Console.WriteLine($"{snum}  {snum.Length}\r\n{num}\r\n");
+            string[,] rnValue = new string[,]
+            {
+                {"","M","MM","MMM","","","","","","" },
+                {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM" },
+                {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC" },
+                {"","I","II","III","IV","V","VI","VII","VIII","IX" }
+            };
+            Console.WriteLine($"{rnValue[3,3]}  {rnValue[2, 8]}  {rnValue[1, 8]}  {rnValue[0, 8]}\r\n");
+
+            string rnum = "";
+            for (int x = snum.Length - 1; x >= 0; x--)
+            {
+                Console.WriteLine($"{x}  {int.Parse(snum.Substring(x, 1))}\r\n");
+                rnum = rnValue[x, int.Parse(snum.Substring(x, 1))] + rnum;
+            }
+            Console.WriteLine(rnum);
+            return rnum;
         }
 
         public int RConvert(string num)
