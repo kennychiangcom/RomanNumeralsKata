@@ -15,6 +15,17 @@ namespace RomanNumeralsApp
         public int RConvert(string num)
         {
             num = num.ToUpper().Trim();
+            if (num.Contains("IIII")) return -1;
+            else if (num.Contains("VV")) return -1;
+            else if (num.Contains("XXXX")) return -1;
+            else if (num.Contains("LL")) return -1;
+            else if (num.Contains("CCCC")) return -1;
+            else if (num.Contains("DD")) return -1;
+            else if (num.Contains("MMMM")) return -1;
+            else if (num.Contains("VX")) return -1;
+            else if (num.Contains("LC")) return -1;
+            else if (num.Contains("DM")) return -1;
+
             int[] numValue = new int[num.Length];
             for (int i = 0; i < num.Length; i++)
             {
